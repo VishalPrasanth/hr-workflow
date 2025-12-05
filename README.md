@@ -1,6 +1,11 @@
-# HR Workflow Designer (Mini HR Workflow Builder)
+# HR Workflow Automation
 
-A visual, interactive workflow builder for HR teams — built using **React**, **TypeScript**, **React Flow**, and a **mock JSON-server backend**.
+Welcome, Tredence Associate! 
+Thank you so much for visiting my GitHub. I sincerely appreciate your time and consideration, and I’d be truly grateful for the opportunity to be part of Tredence.
+
+# Assignment Overview
+
+A visual, interactive workflow builder for HR teams, built using **React**, **TypeScript**, **React Flow**, and a **mock JSON-server backend**.
 
 This tool allows an HR admin to **design**, **configure**, **validate**, **simulate**, **export**, and **import** internal workflows such as onboarding, leave approval, or document verification.
 
@@ -33,6 +38,8 @@ This tool allows an HR admin to **design**, **configure**, **validate**, **simul
 ---
 
 # Project Architecture
+
+![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/67e53266c5dbb1e7916236112484dd2c21d13eeb/public/Folder%20Architecture.jpg)
 
 ---
 
@@ -112,10 +119,14 @@ The backend provides:
 #### **GET /automations**
 Returns mock automated actions:
 
+ ![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/181eba95cea3e3dd741e5bf0bb1959a537e2dfa9/public/Get%20Request.jpg)
+
 
 ## POST /simulate
 
 Accepts workflow JSON and returns execution steps, e.g.:
+
+![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/181eba95cea3e3dd741e5bf0bb1959a537e2dfa9/public/POST%20Request.jpg)
 
 
 ### Running Backend
@@ -152,7 +163,7 @@ Downloads a `.json` file containing:
 🧩 Modular Node Forms
 
 Each node type has its own React component.
-This keeps the panel scalable — adding a new node type is trivial.
+This keeps the panel scalable - adding a new node type is trivial.
 
 🔗 Canvas & Sidebar Separation
 
@@ -162,7 +173,7 @@ Clear responsibility division.
 
 🌐 API abstraction
 
-The app never calls fetch directly—
+The app never calls fetch directly
 API communication goes through /src/api/mockapi.ts.
 
 This makes future replacements (Axios, real backend, MSW) easy.
