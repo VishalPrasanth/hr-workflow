@@ -106,6 +106,8 @@ Uses a JSON-server `/simulate` endpoint.
   - `• Skipped node without outgoing edges`
 - Shows results in the bottom execution console
 
+- ![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/277ec325265b1bbd78017113ad242976e9cb2496/public/Project%20Demo.jpg)
+
 ---
 
 ## 🖥 Mock Backend (Express + JSON Data)
@@ -119,7 +121,7 @@ The backend provides:
 #### **GET /automations**
 Returns mock automated actions:
 
- ![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/181eba95cea3e3dd741e5bf0bb1959a537e2dfa9/public/Get%20Request.jpg)
+ https://github.com/VishalPrasanth/hr-workflow/blob/181eba95cea3e3dd741e5bf0bb1959a537e2dfa9/public/Get%20Request.jpg)
 
 
 ## POST /simulate
