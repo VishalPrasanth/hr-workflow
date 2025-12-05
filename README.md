@@ -1,5 +1,8 @@
 # HR Workflow Automation
 
+Welcome, Tredence Associate!
+Thank you so much for visiting my GitHub. I sincerely appreciate your time and consideration, and I’d be truly grateful for the opportunity to be part of Tredence.
+
 A visual, interactive workflow builder for HR teams, built using **React**, **TypeScript**, **React Flow**, and a **mock JSON-server backend**.
 
 This tool allows an HR admin to **design**, **configure**, **validate**, **simulate**, **export**, and **import** internal workflows such as onboarding, leave approval, or document verification.
