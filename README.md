@@ -34,7 +34,7 @@ This tool allows an HR admin to **design**, **configure**, **validate**, **simul
 
 # Project Architecture
 
-![Image Alt]([image_url](https://github.com/VishalPrasanth/hr-workflow/blob/67e53266c5dbb1e7916236112484dd2c21d13eeb/public/Folder%20Architecture.jpg))
+![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/67e53266c5dbb1e7916236112484dd2c21d13eeb/public/Folder%20Architecture.jpg)
 
 ---
 
