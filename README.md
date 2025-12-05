@@ -1,54 +1,129 @@
-# React + TypeScript + Vite
+# HR Workflow Designer (Mini HR Workflow Builder)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A visual, interactive workflow builder for HR teams — built using **React**, **TypeScript**, **React Flow**, and a **mock JSON-server backend**.
 
-Currently, two official plugins are available:
+This tool allows an HR admin to **design**, **configure**, **validate**, **simulate**, **export**, and **import** internal workflows such as onboarding, leave approval, or document verification.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+# 🌟 Features (Current Implementation)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧱 Workflow Canvas
+- Drag-and-drop workflow nodes onto the canvas  
+- Click-to-add nodes from the sidebar  
+- Move nodes freely (React Flow)  
+- Connect nodes with edges  
+- Minimap, zoom in/out, fit view
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🧩 Node Types Implemented
+Each node type includes a fully functional configuration panel:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### **1. Start Node**
+- Start title  
+- Optional metadata key–value pairs  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### **2. Task Node**
+- Title  
+- Description  
+- Assignee  
+- Due date  
+- Custom fields (dynamic key–value inputs)
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### **3. Approval Node**
+- Title  
+- Approver role (Manager / HRBP / Director)  
+- Auto-approve threshold  
+
+### **4. Automated Step Node**
+- Title  
+- Select an automation action (fetched from JSON-server)  
+- Dynamic action parameters  
+- Auto-saved per-action configurations  
+
+### **5. End Node**
+- End message  
+- Summary flag checkbox  
+
+Each node updates React Flow state and persists values reliably.
+
+---
+
+# 🧮 Workflow Validation Engine
+Custom validation checks:
+
+- ✔ Exactly one **Start** node required  
+- ✔ At least one **End** node suggested  
+- ✔ Detects **isolated nodes**  
+- ✔ Detects **unconnected sequences**  
+- ✔ Displays **errors and warnings** in a clean console panel  
+
+---
+
+# 🚀 Workflow Simulation (Mock API)
+Uses a JSON-server `/simulate` endpoint.
+
+- Walks workflow logically (start → middle → end)
+- Produces step-by-step execution logs:
+  - `✓ Executed start node "Start"`
+  - `✓ Executed task node "Task"`
+  - `• Skipped node without outgoing edges`
+- Shows results in the bottom execution console
+
+---
+
+## 🖥 Mock Backend (Express + JSON Data)
+
+Although JSON-server is included, this project uses a **custom Express backend** because
+the assignment requires a programmable `/simulate` endpoint.
+
+### 📌 server.js Overview
+The backend provides:
+
+#### **GET /automations**
+Returns mock automated actions:
+```json
+[
+  { "id": "send_email", "label": "Send Email", "params": ["to", "subject"] },
+  { "id": "generate_doc", "label": "Generate Document", "params": ["template", "recipient"] }
+]
+
+
+## POST /simulate
+
+Accepts workflow JSON and returns execution steps, e.g.:
+
+{
+  "valid": true,
+  "errors": [],
+  "steps": [
+    { "id": 1, "nodeId": "node-1", "type": "start", "status": "ok", "message": "Executed start node" }
+  ]
+}
+
+Running Backend
+npm run api
+
+
+This starts:
+
+http://localhost:3001
+
+Postman Testing
+
+GET → http://localhost:3001/automations
+
+POST → http://localhost:3001/simulate
+
+Body → Raw JSON → { nodes: [], edges: [] }
+---
+
+# 🔄 Import / Export Workflow (JSON)
+From the console:
+
+### ✔ **Export Workflow**
+Downloads a `.json` file containing:
+```json
+{
+  "nodes": [...],
+  "edges": [...]
+}
