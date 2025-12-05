@@ -1,6 +1,6 @@
-# HR Workflow Designer (Mini HR Workflow Builder)
+# HR Workflow Automation
 
-A visual, interactive workflow builder for HR teams — built using **React**, **TypeScript**, **React Flow**, and a **mock JSON-server backend**.
+A visual, interactive workflow builder for HR teams, built using **React**, **TypeScript**, **React Flow**, and a **mock JSON-server backend**.
 
 This tool allows an HR admin to **design**, **configure**, **validate**, **simulate**, **export**, and **import** internal workflows such as onboarding, leave approval, or document verification.
 
@@ -158,7 +158,7 @@ Downloads a `.json` file containing:
 🧩 Modular Node Forms
 
 Each node type has its own React component.
-This keeps the panel scalable — adding a new node type is trivial.
+This keeps the panel scalable - adding a new node type is trivial.
 
 🔗 Canvas & Sidebar Separation
 
@@ -168,7 +168,7 @@ Clear responsibility division.
 
 🌐 API abstraction
 
-The app never calls fetch directly—
+The app never calls fetch directly
 API communication goes through /src/api/mockapi.ts.
 
 This makes future replacements (Axios, real backend, MSW) easy.
