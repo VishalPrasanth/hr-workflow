@@ -106,7 +106,9 @@ Uses a JSON-server `/simulate` endpoint.
   - `• Skipped node without outgoing edges`
 - Shows results in the bottom execution console
 
-- ![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/277ec325265b1bbd78017113ad242976e9cb2496/public/Project%20Demo.jpg)
+---
+# Project Demo 
+![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/277ec325265b1bbd78017113ad242976e9cb2496/public/Project%20Demo.jpg)
 
 ---
 
