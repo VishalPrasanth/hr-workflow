@@ -64,7 +64,7 @@ export function NodeDetailsPanel({
     return (
       <div
         style={{
-          width: '320px',
+          width: '250px',
           height: '100%',
           backgroundColor: '#f4f3ee', // Updated to new background color
           borderLeft: '1px solid #d9d7d0', // Lighter border to match new background
@@ -148,7 +148,7 @@ export function NodeDetailsPanel({
   return (
     <div
       style={{
-        width: '320px',
+        width: '250px',
         height: '100%',
         backgroundColor: '#f4f3ee', // Updated to new background color
         borderLeft: '1px solid #d9d7d0', // Lighter border to match new background

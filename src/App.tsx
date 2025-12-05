@@ -20,7 +20,6 @@ import { Console } from './components/Console/Console';
 import { validateWorkflow, type WorkflowValidationError } from './workflow/validation';
 import { simulateWorkflow, type SimulationResult } from './api/mockapi';
 
-// 🔹 Shared type for all our HR node kinds
 export type NodeKind = 'start' | 'task' | 'approval' | 'automated' | 'end';
 
 const initialNodes: Node[] = [];
@@ -34,22 +33,23 @@ export default function App() {
   const [validationErrors, setValidationErrors] = useState<WorkflowValidationError[]>([]);
   const [simulationResult, setSimulationResult] = useState<SimulationResult | null>(null);
   const [isSimulating, setIsSimulating] = useState(false);
+  const [showConsole, setShowConsole] = useState(false);
+  // const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
   // -----------------------------------------------------------
   // VALIDATION
   // -----------------------------------------------------------
-  const handleValidate = useCallback(() => {
+  const handleValidateWorkflow = useCallback(() => {
     const result = validateWorkflow(nodes, edges);
     setValidationErrors(result);
+    return result;
   }, [nodes, edges]);
 
   // -----------------------------------------------------------
   // SIMULATION
   // -----------------------------------------------------------
   const handleRunSimulation = useCallback(async () => {
-    const validation = validateWorkflow(nodes, edges);
-    setValidationErrors(validation);
-
+    const validation = handleValidateWorkflow();
     const hasError = validation.some((e) => e.type === 'error');
     if (hasError) return; // block simulation
 
@@ -315,7 +315,15 @@ const handleImportWorkflow = useCallback(() => {
     }}>
       {/* Sidebar */}
       <div style={{ flexShrink: 0 }}>
-        <Sidebar onAddNode={handleAddNode} />
+        <Sidebar 
+          onAddNode={handleAddNode}
+          onImportWorkflow={handleImportWorkflow}
+          onExportWorkflow={handleExportWorkflow}
+          showConsole={showConsole}
+          onToggleConsole={() => setShowConsole(!showConsole)}
+          // isCollapsed={isSidebarCollapsed}
+          // onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        />
       </div>
 
       {/* Main Content */}
@@ -325,12 +333,8 @@ const handleImportWorkflow = useCallback(() => {
         flexDirection: 'column',
         overflow: 'hidden'
       }}>
-        {/* Canvas */}
-        <div style={{ 
-          flex: 1,
-          position: 'relative',
-          minHeight: 0
-        }}>
+        {/* Workflow Canvas */}
+        <div style={{ flex: 1, position: 'relative' }}>
           <ReactFlowProvider>
             <WorkflowCanvas
               nodes={nodes}
@@ -344,28 +348,35 @@ const handleImportWorkflow = useCallback(() => {
           </ReactFlowProvider>
         </div>
 
-        {/* Console */}
-        <Console
-          validationErrors={validationErrors}
-          simulationResult={simulationResult}
-          isSimulating={isSimulating}
-          onValidate={handleValidate}
-          onRunSimulation={handleRunSimulation}
-          onExportWorkflow={handleExportWorkflow}
-          onImportWorkflow={handleImportWorkflow}
-        />
+        {/* Console Panel */}
+        {showConsole && (
+          <div style={{
+            height: '200px',
+            backgroundColor: '#1a1a1a',
+            borderTop: '1px solid #333',
+            overflow: 'auto'
+          }}>
+            <Console
+              validationErrors={validationErrors}
+              simulationResult={simulationResult}
+              isSimulating={isSimulating}
+              onValidate={handleValidateWorkflow}
+              onRunSimulation={handleRunSimulation}
+            />
+          </div>
+        )}
       </div>
 
-      {/* Right Panel */}
-      <div style={{ flexShrink: 0 }}>
-        <NodeDetailsPanel
-          node={selectedNode}
-          onUpdateNodeData={updateNodeData}
-          onDeleteNode={deleteNode}
-        />
-      </div>
+      {/* Node Details Panel */}
+      {selectedNode && (
+        <div style={{ flexShrink: 0, width: '250px' }}>
+          <NodeDetailsPanel
+            node={selectedNode}
+            onUpdateNodeData={updateNodeData}
+            onDeleteNode={deleteNode}
+          />
+        </div>
+      )}
     </div>
   );
 }
-
-// Remove unused buttonStyle since it's now in the Console component

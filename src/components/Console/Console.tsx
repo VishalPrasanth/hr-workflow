@@ -8,8 +8,6 @@ type ConsoleProps = {
   isSimulating: boolean;
   onValidate: () => void;
   onRunSimulation: () => void;
-  onExportWorkflow: () => void;
-  onImportWorkflow: () => void;
 };
 
 export const Console: React.FC<ConsoleProps> = ({
@@ -18,8 +16,6 @@ export const Console: React.FC<ConsoleProps> = ({
   isSimulating,
   onValidate,
   onRunSimulation,
-  onExportWorkflow,
-  onImportWorkflow,
 }) => {
   // Remove unused variables to fix lint warnings
   
@@ -56,25 +52,6 @@ export const Console: React.FC<ConsoleProps> = ({
           )}
         </button>
 
-        <button
-          onClick={onExportWorkflow}
-          style={{
-            ...styles.button,
-            ...styles.secondaryButton,
-          }}
-        >
-          Export JSON
-        </button>
-
-        <button
-          onClick={onImportWorkflow}
-          style={{
-            ...styles.button,
-            ...styles.secondaryButton,
-          }}
-        >
-          Import JSON
-        </button>
       </div>
 
 
