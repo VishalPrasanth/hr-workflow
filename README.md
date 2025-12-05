@@ -4,6 +4,36 @@ A visual, interactive workflow builder for HR teams — built using **React**, *
 
 This tool allows an HR admin to **design**, **configure**, **validate**, **simulate**, **export**, and **import** internal workflows such as onboarding, leave approval, or document verification.
 
+# This project demonstrates:
+
+- Deep React & React Flow knowledge
+
+- Modular and scalable architecture
+
+- Rich, dynamic node configuration forms
+
+- Mock API integration (JSON server + Express)
+
+- Workflow simulation sandbox
+
+- JSON Import & Export support
+
+---
+
+# 🧪 How to Run & Test
+1️⃣ Install
+```npm install```
+
+2️⃣ Start Frontend
+```npm run dev```
+
+3️⃣ Start Mock API Server
+```npm run api```
+
+---
+
+# Project Architecture
+
 ---
 
 # 🌟 Features (Current Implementation)
@@ -81,49 +111,73 @@ The backend provides:
 
 #### **GET /automations**
 Returns mock automated actions:
-```json
-[
-  { "id": "send_email", "label": "Send Email", "params": ["to", "subject"] },
-  { "id": "generate_doc", "label": "Generate Document", "params": ["template", "recipient"] }
-]
 
 
 ## POST /simulate
 
 Accepts workflow JSON and returns execution steps, e.g.:
 
-{
-  "valid": true,
-  "errors": [],
-  "steps": [
-    { "id": 1, "nodeId": "node-1", "type": "start", "status": "ok", "message": "Executed start node" }
-  ]
-}
 
-Running Backend
+### Running Backend
 npm run api
 
 
 This starts:
 
-http://localhost:3001
+```http://localhost:3001```
 
 Postman Testing
 
-GET → http://localhost:3001/automations
+```GET → http://localhost:3001/automations```
 
-POST → http://localhost:3001/simulate
+```POST → http://localhost:3001/simulate```
 
-Body → Raw JSON → { nodes: [], edges: [] }
----
+```Body → Raw JSON → { nodes: [], edges: [] }```
+
 
 # 🔄 Import / Export Workflow (JSON)
 From the console:
 
 ### ✔ **Export Workflow**
 Downloads a `.json` file containing:
-```json
-{
+
+`{
   "nodes": [...],
   "edges": [...]
-}
+}`
+
+---
+
+# 🧠 Architecture Notes & Design Choices
+🧩 Modular Node Forms
+
+Each node type has its own React component.
+This keeps the panel scalable — adding a new node type is trivial.
+
+🔗 Canvas & Sidebar Separation
+
+Canvas manages only graph state.
+Sidebar only manages node creation.
+Clear responsibility division.
+
+🌐 API abstraction
+
+The app never calls fetch directly—
+API communication goes through /src/api/mockapi.ts.
+
+This makes future replacements (Axios, real backend, MSW) easy.
+
+🔍 Validation Layer
+
+Validation is separated in /workflow/validation.ts, enabling:
+
+Structural validation
+
+Graph rules
+
+Future cycle detection
+
+# 🎛 Scalable UI
+
+Components are decoupled so UI libraries can be added later with no rewrites.
+
