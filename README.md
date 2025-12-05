@@ -32,6 +32,10 @@ This tool allows an HR admin to **design**, **configure**, **validate**, **simul
 
 ---
 
+# Project Architecture
+
+---
+
 # 🌟 Features (Current Implementation)
 
 ## 🧱 Workflow Canvas
