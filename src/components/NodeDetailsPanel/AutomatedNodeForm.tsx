@@ -16,7 +16,6 @@ export function AutomatedNodeForm({ node, onUpdateNodeData }: Props) {
   const title: string = data.title ?? '';
   const actionId: string = data.actionId ?? '';
 
-  // current params for the selected action
   const params: Record<string, string> = data.params ?? {};
   // saved params per action
   const savedParams: Record<string, Record<string, string>> =
@@ -61,7 +60,6 @@ export function AutomatedNodeForm({ node, onUpdateNodeData }: Props) {
     const action = actions.find((a) => a.id === nextActionId);
 
     if (!action) {
-      // no known action -> reset params but keep savedParams as-is
       onUpdateNodeData(node.id, {
         actionId: nextActionId,
         params: {},
@@ -70,7 +68,6 @@ export function AutomatedNodeForm({ node, onUpdateNodeData }: Props) {
       return;
     }
 
-    // if we have saved params for this action, reuse them
     const previouslySaved = savedParams[nextActionId] || {};
 
     const nextParams: Record<string, string> = {};
@@ -94,7 +91,6 @@ export function AutomatedNodeForm({ node, onUpdateNodeData }: Props) {
       [key]: value,
     };
 
-    // update savedParams for the current action as well
     const currentActionId = actionId || '__no_action__';
 
     onUpdateNodeData(node.id, {

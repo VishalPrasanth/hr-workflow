@@ -13,46 +13,36 @@ type NodeDetailsPanelProps = {
   onDeleteNode: (id: string) => void;
 };
 
-// const getNodeTypeLabel = (kind: string) => {
-//   const labels: Record<string, string> = {
-//     start: 'Start Node',
-//     task: 'Task Node',
-//     approval: 'Approval Node',
-//     automated: 'Automated Node',
-//     end: 'End Node',
-//   };
-//   return labels[kind] || 'Node';
-// };
 
 const getNodeTypeColor = (kind: string) => {
   const colors: Record<string, { bg: string; text: string; border: string }> = {
     start: { 
-      bg: 'rgba(16, 185, 129, 0.1)', // emerald-500/10 
-      text: '#10B981', // emerald-500
-      border: '#10B981' // emerald-500
+      bg: 'rgba(16, 185, 129, 0.1)', 
+      text: '#10B981', 
+      border: '#10B981'
     },
     task: { 
-      bg: 'rgba(59, 130, 246, 0.1)', // blue-500/10
-      text: '#3B82F6', // blue-500
-      border: '#3B82F6' // blue-500
+      bg: 'rgba(59, 130, 246, 0.1)', 
+      text: '#3B82F6', 
+      border: '#3B82F6' 
     },
     approval: { 
-      bg: 'rgba(245, 158, 11, 0.1)', // amber-500/10
-      text: '#F59E0B', // amber-500
-      border: '#F59E0B' // amber-500
+      bg: 'rgba(245, 158, 11, 0.1)', 
+      text: '#F59E0B', 
+      border: '#F59E0B' 
     },
     automated: { 
-      bg: 'rgba(139, 92, 246, 0.1)', // violet-500/10
-      text: '#8B5CF6', // violet-500
-      border: '#8B5CF6' // violet-500
+      bg: 'rgba(139, 92, 246, 0.1)', 
+      text: '#8B5CF6', 
+      border: '#8B5CF6' 
     },
     end: { 
-      bg: 'rgba(239, 68, 68, 0.1)', // red-500/10
-      text: '#EF4444', // red-500
-      border: '#EF4444' // red-500
+      bg: 'rgba(239, 68, 68, 0.1)', 
+      text: '#EF4444', 
+      border: '#EF4444'
     },
   };
-  return colors[kind] || { bg: 'rgba(226, 232, 240, 0.5)', text: '#475569', border: '#E2E8F0' }; // slate
+  return colors[kind] || { bg: 'rgba(226, 232, 240, 0.5)', text: '#475569', border: '#E2E8F0' }; 
 };
 
 export function NodeDetailsPanel({
@@ -66,8 +56,8 @@ export function NodeDetailsPanel({
         style={{
           width: '250px',
           height: '100%',
-          backgroundColor: '#f4f3ee', // Updated to new background color
-          borderLeft: '1px solid #d9d7d0', // Lighter border to match new background
+          backgroundColor: '#f4f3ee', 
+          borderLeft: '1px solid #d9d7d0', 
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
@@ -81,7 +71,7 @@ export function NodeDetailsPanel({
             width: '64px',
             height: '64px',
             borderRadius: '50%',
-            backgroundColor: '#e8e6e1', // Lighter background for the icon container
+            backgroundColor: '#e8e6e1', 
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -93,7 +83,7 @@ export function NodeDetailsPanel({
             height="32"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="#64748B" // slate-500 - darker for better contrast
+            stroke="#64748B" 
             strokeWidth="1.5"
           >
             <path
@@ -112,7 +102,7 @@ export function NodeDetailsPanel({
           style={{
             fontSize: '16px',
             fontWeight: 600,
-            color: '#1E293B', // Dark text for better contrast
+            color: '#1E293B',
             margin: '0 0 8px 0',
           }}
         >
@@ -121,7 +111,7 @@ export function NodeDetailsPanel({
         <p
           style={{
             fontSize: '14px',
-            color: '#475569', // Darker text for better contrast
+            color: '#475569', 
             margin: 0,
             lineHeight: 1.5,
           }}
@@ -150,17 +140,17 @@ export function NodeDetailsPanel({
       style={{
         width: '250px',
         height: '100%',
-        backgroundColor: '#f4f3ee', // Updated to new background color
-        borderLeft: '1px solid #d9d7d0', // Lighter border to match new background
+        backgroundColor: '#f4f3ee', 
+        borderLeft: '1px solid #d9d7d0', 
         display: 'flex',
         flexDirection: 'column',
-        color: '#1E293B', // Dark text for better contrast
+        color: '#1E293B',
       }}
     >
       <div
         style={{
           padding: '20px',
-          borderBottom: '1px solid #d9d7d0', // Lighter border to match new background
+          borderBottom: '1px solid #d9d7d0',
         }}
       >
         <div
@@ -175,7 +165,7 @@ export function NodeDetailsPanel({
             style={{
               fontSize: '16px',
               fontWeight: 600,
-              color: '#1E293B', // Dark text for better contrast
+              color: '#1E293B', 
               margin: 0,
             }}
           >
@@ -194,7 +184,7 @@ export function NodeDetailsPanel({
               display: 'inline-flex',
               alignItems: 'center',
               gap: '6px',
-              backdropFilter: 'brightness(0.95)', // Slightly darken the background for better contrast
+              backdropFilter: 'brightness(0.95)', 
             }}
           >
             <span style={{ marginTop: '1px' }}>{kind}</span>
@@ -207,7 +197,7 @@ export function NodeDetailsPanel({
               display: 'block',
               fontSize: '13px',
               fontWeight: 500,
-              color: '#475569', // Darker text for better contrast
+              color: '#475569', 
               marginBottom: '8px',
             }}
           >
@@ -222,9 +212,9 @@ export function NodeDetailsPanel({
               padding: '10px 12px',
               fontSize: '14px',
               borderRadius: '6px',
-              border: '1px solid #d9d7d0', // Lighter border to match new background
-              backgroundColor: '#ffffff', // White background for input
-              color: '#1E293B', // Dark text for better contrast
+              border: '1px solid #d9d7d0', 
+              backgroundColor: '#ffffff', 
+              color: '#1E293B', 
               boxShadow: 'none',
               transition: 'all 0.2s',
               outline: 'none',
@@ -234,7 +224,7 @@ export function NodeDetailsPanel({
               e.target.style.boxShadow = `0 0 0 1px ${getNodeTypeColor(kind).border}`;
             }}
             onBlur={(e) => {
-              e.target.style.borderColor = '#d9d7d0'; // Lighter border to match new background
+              e.target.style.borderColor = '#d9d7d0'; 
               e.target.style.boxShadow = 'none';
             }}
             placeholder="Enter node label"
@@ -247,7 +237,7 @@ export function NodeDetailsPanel({
           flex: 1,
           overflowY: 'auto',
           padding: '20px',
-          backgroundColor: '#f4f3ee', // Updated to new background color
+          backgroundColor: '#f4f3ee', 
         }}
       >
         {/* Node Type Specific Forms */}
@@ -277,8 +267,8 @@ export function NodeDetailsPanel({
       <div
         style={{
           padding: '16px 20px',
-          borderTop: '1px solid #d9d7d0', // Lighter border to match new background
-          backgroundColor: '#e8e6e1', // Slightly darker than main background for visual separation
+          borderTop: '1px solid #d9d7d0', 
+          backgroundColor: '#e8e6e1', 
         }}
       >
         <button
@@ -289,7 +279,7 @@ export function NodeDetailsPanel({
             fontSize: '14px',
             fontWeight: 500,
             color: '#ffffff',
-            backgroundColor: '#EF4444', // red-500
+            backgroundColor: '#EF4444',
             border: 'none',
             borderRadius: '6px',
             cursor: 'pointer',
@@ -322,7 +312,7 @@ export function NodeDetailsPanel({
         <p
           style={{
             fontSize: '12px',
-            color: '#64748B', // Darker text for better contrast
+            color: '#64748B', 
             margin: '8px 0 0 0',
             textAlign: 'center',
           }}

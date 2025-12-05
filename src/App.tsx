@@ -34,20 +34,16 @@ export default function App() {
   const [simulationResult, setSimulationResult] = useState<SimulationResult | null>(null);
   const [isSimulating, setIsSimulating] = useState(false);
   const [showConsole, setShowConsole] = useState(false);
-  // const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
 
-  // -----------------------------------------------------------
   // VALIDATION
-  // -----------------------------------------------------------
   const handleValidateWorkflow = useCallback(() => {
     const result = validateWorkflow(nodes, edges);
     setValidationErrors(result);
     return result;
   }, [nodes, edges]);
 
-  // -----------------------------------------------------------
+  
   // SIMULATION
-  // -----------------------------------------------------------
   const handleRunSimulation = useCallback(async () => {
     const validation = handleValidateWorkflow();
     const hasError = validation.some((e) => e.type === 'error');
@@ -115,10 +111,7 @@ const handleImportWorkflow = useCallback(() => {
   }
 }, [setNodes, setEdges]);
 
-
-  // -----------------------------------------------------------
   // CREATE NODE (button click)
-  // -----------------------------------------------------------
   const handleAddNode = useCallback(
     (kind: NodeKind) => {
       const lastNode = nodes[nodes.length - 1];
@@ -183,9 +176,7 @@ const handleImportWorkflow = useCallback(() => {
     [nodes]
   );
 
-  // -----------------------------------------------------------
   // DRAG + DROP CREATE NODE
-  // -----------------------------------------------------------
   const handleDropNode = useCallback(
     (kind: NodeKind, position: { x: number; y: number }) => {
       let data: any;
@@ -245,9 +236,7 @@ const handleImportWorkflow = useCallback(() => {
     []
   );
 
-  // -----------------------------------------------------------
   // UPDATE NODE DATA
-  // -----------------------------------------------------------
   const updateNodeData = useCallback(
     (id: string, patch: Record<string, unknown>) => {
       setNodes((prev) =>
@@ -261,18 +250,14 @@ const handleImportWorkflow = useCallback(() => {
     []
   );
 
-  // -----------------------------------------------------------
   // DELETE NODE
-  // -----------------------------------------------------------
   const deleteNode = useCallback((id: string) => {
     setNodes((prev) => prev.filter((n) => n.id !== id));
     setEdges((prev) => prev.filter((e) => e.source !== id && e.target !== id));
     setSelectedNodeId((sel) => (sel === id ? null : sel));
   }, []);
 
-  // -----------------------------------------------------------
   // REACT FLOW HANDLERS
-  // -----------------------------------------------------------
   const onNodesChange = useCallback(
     (changes: NodeChange[]) =>
       setNodes((snapshot) => applyNodeChanges(changes, snapshot)),
@@ -299,9 +284,8 @@ const handleImportWorkflow = useCallback(() => {
     ? nodes.find((n) => n.id === selectedNodeId) || null
     : null;
 
-  // -----------------------------------------------------------
+
   // RENDER
-  // -----------------------------------------------------------
   return (
     <div style={{ 
       display: 'flex',
@@ -321,8 +305,6 @@ const handleImportWorkflow = useCallback(() => {
           onExportWorkflow={handleExportWorkflow}
           showConsole={showConsole}
           onToggleConsole={() => setShowConsole(!showConsole)}
-          // isCollapsed={isSidebarCollapsed}
-          // onToggleCollapse={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
         />
       </div>
 

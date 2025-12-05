@@ -22,47 +22,47 @@ const NODES: NodeItem[] = [
     id: "start",
     label: "Start",
     description: "Begin your workflow here",
-    color: "#10B981", // emerald-500
+    color: "#10B981", 
   },
   {
     id: "task",
     label: "Task",
     description: "A manual task step",
-    color: "#3B82F6", // blue-500
+    color: "#3B82F6", 
   },
   {
     id: "approval",
     label: "Approval",
     description: "Requires manual approval",
-    color: "#F59E0B", // amber-500
+    color: "#F59E0B", 
   },
   {
     id: "automated",
     label: "Automated",
     description: "Runs automatically",
-    color: "#8B5CF6", // violet-500
+    color: "#8B5CF6", 
   },
   {
     id: "end",
     label: "End",
     description: "Finish the workflow",
-    color: "#EF4444", // red-500
+    color: "#EF4444", 
   },
 ];
 
 const sidebarStyle: React.CSSProperties = {
   width: "250px",
   height: "100%",
-  backgroundColor: "#f4f3ee", // Updated to new background color
-  color: "#1E293B", // Dark text for better contrast
+  backgroundColor: "#f4f3ee", 
+  color: "#1E293B", 
   padding: "16px",
   display: "flex",
   flexDirection: "column",
   gap: "12px",
-  borderRight: "1px solid #d9d7d0", // Lighter border to match new background
+  borderRight: "1px solid #d9d7d0", 
 };
 
-// Base style for node items
+
 const nodeItemStyle = (
   color: string,
   isHovered = false
@@ -93,7 +93,7 @@ export function Sidebar({
     event: React.DragEvent<HTMLDivElement>,
     kind: NodeKind
   ) => {
-    // this key is what we'll read in WorkflowCanvas
+    
     event.dataTransfer.setData("application/reactflow", kind);
     event.dataTransfer.effectAllowed = "move";
   };

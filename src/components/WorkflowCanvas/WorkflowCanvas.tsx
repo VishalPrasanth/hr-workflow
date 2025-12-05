@@ -13,8 +13,6 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
-// If you exported NodeKind from App, you can import it instead:
-// import type { NodeKind } from '../App';
 
 type NodeKind = 'start' | 'task' | 'approval' | 'automated' | 'end';
 

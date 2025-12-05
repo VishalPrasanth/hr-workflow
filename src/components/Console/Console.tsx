@@ -17,7 +17,6 @@ export const Console: React.FC<ConsoleProps> = ({
   onValidate,
   onRunSimulation,
 }) => {
-  // Remove unused variables to fix lint warnings
   
   return (
     <div style={styles.consoleContainer}>
@@ -196,7 +195,6 @@ const styles = {
   },
 } as const;
 
-// Add CSS for the spinner animation
 const styleElement = document.createElement('style');
 styleElement.textContent = `
   @keyframes spin {
