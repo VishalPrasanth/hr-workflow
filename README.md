@@ -114,10 +114,14 @@ The backend provides:
 #### **GET /automations**
 Returns mock automated actions:
 
+ ![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/181eba95cea3e3dd741e5bf0bb1959a537e2dfa9/public/Get%20Request.jpg)
+
 
 ## POST /simulate
 
 Accepts workflow JSON and returns execution steps, e.g.:
+
+![Image Alt](https://github.com/VishalPrasanth/hr-workflow/blob/181eba95cea3e3dd741e5bf0bb1959a537e2dfa9/public/POST%20Request.jpg)
 
 
 ### Running Backend
